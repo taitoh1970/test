@@ -1,0 +1,17 @@
+CC     = gcc
+CFLAGS = -O2
+LIBS   = -lm
+TARGET = test_c_log
+SRC    = test_log.c  test_main.c  test_print.c
+OBJ    = $(SRC:.c=.o)
+
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^ $(LIBS)
+
+# n.o is made automatically from n.c with a recipe of the form ‘$(CC) $(CPPFLAGS) $(CFLAGS) -c’.
+# Therefore this part is not necessary.
+#%.o : %.c
+#    $(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	-rm -f $(OBJ) $(TARGET) core *~
